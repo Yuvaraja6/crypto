@@ -21,7 +21,7 @@ class _ExchangeBGState extends State<ExchangeBG> {
             ClipPath(
                 clipper: WaveClipperTwo(),
                 child: Container(
-                  height: DynamicSizes().dynamicHeight(context, 0.35),
+                  height: DynamicSizes().dynamicHeight(context, 0.37),
                   color: CommonColors().appTheme,
                 )),
             Expanded(

@@ -175,6 +175,7 @@ class _WalletPageState extends State<WalletPage> {
                         BoxShadow(color: CommonColors().grey, blurRadius: 5),
                       ]),
                   child: ListView.separated(
+                    padding: EdgeInsets.zero,
                     itemCount: coinsList.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(

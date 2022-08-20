@@ -1,6 +1,7 @@
 import 'package:cryptodesign/API/remote/response/Status.dart';
 import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Screens/ChartViewPage/ChartViewPage.dart';
+import 'package:cryptodesign/Screens/Drawer/MenuDrawer.dart';
 import 'package:cryptodesign/Screens/MarketPage/Model/Markets.dart';
 import 'package:cryptodesign/Screens/MarketPage/ViewModel/MarketVM.dart';
 import 'package:cryptodesign/Widgets/Backgrounds/BackgroundUI.dart';
@@ -99,6 +100,7 @@ class _MarketPageState extends State<MarketPage> {
   ];
 
   final MarketVM viewModel = MarketVM();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -235,9 +237,31 @@ class _MarketPageState extends State<MarketPage> {
   Widget marketAPIList(List<MarketData>? marketList) {
     return Column(
       children: [
-        CustomAppBar(
-          title: 'Market',
-          titleColor: CommonColors().white,
+        Stack(
+          alignment: Alignment.centerLeft,
+          children: [
+            SafeArea(
+              child: GestureDetector(
+                  onTap: () {
+                    _scaffoldKey.currentState!.openDrawer();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: CircleAvatar(
+                      radius: 15,
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.person,
+                        color: CommonColors().appTheme,
+                      ),
+                    ),
+                  )),
+            ),
+            CustomAppBar(
+              title: 'Market',
+              titleColor: CommonColors().white,
+            ),
+          ],
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -347,6 +371,8 @@ class _MarketPageState extends State<MarketPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: MenuDrawer(),
       body: BackgroundUI(
         child: ChangeNotifierProvider<MarketVM>(
           create: (BuildContext context) => viewModel,

@@ -40,10 +40,19 @@ class _ExchangePageState extends State<ExchangePage>
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: Colors.white, width: 5),
-              color: Colors.grey.shade600,
               boxShadow: [
                 BoxShadow(color: CommonColors().grey, blurRadius: 5),
-              ]),
+              ],
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color.fromRGBO(0, 188, 212, 1),
+                    Color.fromRGBO(0, 161, 255, 1),
+                    // Color.fromRGBO(0, 121, 255, 1),
+                    Color.fromRGBO(0, 161, 255, 1),
+                    Color.fromRGBO(0, 188, 212, 1),
+                  ])),
           width: DynamicSizes().dynamicWidth(context, 0.9),
           child: Padding(
               padding: const EdgeInsets.all(8.0),
