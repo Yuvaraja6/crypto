@@ -207,93 +207,95 @@ class _ExchangePageState extends State<ExchangePage>
     return Scaffold(
       backgroundColor: CommonColors().white,
       body: ExchangeBG(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CustomAppBar(title: 'Exchange'),
-            priceTicker(),
-            SizedBox(
-              height: 10,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: SizedBox(
-                    height: 30,
-                    width: DynamicSizes().dynamicWidth(context, 0.6),
-                    child: TabBar(
-                      physics: NeverScrollableScrollPhysics(),
-                      isScrollable: true,
-                      controller: _tabController,
-                      labelPadding: EdgeInsets.only(right: 8.0, left: 8.0),
-                      indicatorSize: TabBarIndicatorSize.label,
-                      indicatorColor: Colors.white,
-                      indicatorWeight: 3,
-                      tabs: [
-                        CustomText(
-                          'Chart',
-                          color: CommonColors().white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        CustomText(
-                          'Order book',
-                          color: CommonColors().white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        CustomText(
-                          'Trades',
-                          color: CommonColors().white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ],
-                    )),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CustomAppBar(title: 'Exchange'),
+              priceTicker(),
+              SizedBox(
+                height: 10,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              height: DynamicSizes().dynamicHeight(context, 0.46),
-              child: TabBarView(
-                physics: NeverScrollableScrollPhysics(),
-                controller: _tabController,
-                children: [chartView(), orderBook(), trades()],
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: SizedBox(
+                      height: 30,
+                      width: DynamicSizes().dynamicWidth(context, 0.6),
+                      child: TabBar(
+                        physics: NeverScrollableScrollPhysics(),
+                        isScrollable: true,
+                        controller: _tabController,
+                        labelPadding: EdgeInsets.only(right: 8.0, left: 8.0),
+                        indicatorSize: TabBarIndicatorSize.label,
+                        indicatorColor: Colors.white,
+                        indicatorWeight: 3,
+                        tabs: [
+                          CustomText(
+                            'Chart',
+                            color: CommonColors().white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          CustomText(
+                            'Order book',
+                            color: CommonColors().white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          CustomText(
+                            'Trades',
+                            color: CommonColors().white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ],
+                      )),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-              RoundedBoxButton(
-                text: 'Buy',
-                buttonColor: Colors.green,
-                width: DynamicSizes().dynamicWidth(context, 0.45),
-                onTap: () {
-                  BottomModelSheet().modalBottomSheet(
-                      context,
-                      TradePart(
-                        tabIndex: 0,
-                      ));
-                },
+              SizedBox(
+                height: 20,
               ),
-              RoundedBoxButton(
-                text: 'Sell',
-                buttonColor: Colors.red,
-                width: DynamicSizes().dynamicWidth(context, 0.45),
-                onTap: () {
-                  BottomModelSheet().modalBottomSheet(
-                      context,
-                      TradePart(
-                        tabIndex: 1,
-                      ));
-                },
+              SizedBox(
+                height: DynamicSizes().dynamicHeight(context, 0.46),
+                child: TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
+                  controller: _tabController,
+                  children: [chartView(), orderBook(), trades()],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                RoundedBoxButton(
+                  text: 'Buy',
+                  buttonColor: Colors.green,
+                  width: DynamicSizes().dynamicWidth(context, 0.45),
+                  onTap: () {
+                    BottomModelSheet().modalBottomSheet(
+                        context,
+                        TradePart(
+                          tabIndex: 0,
+                        ));
+                  },
+                ),
+                RoundedBoxButton(
+                  text: 'Sell',
+                  buttonColor: Colors.red,
+                  width: DynamicSizes().dynamicWidth(context, 0.45),
+                  onTap: () {
+                    BottomModelSheet().modalBottomSheet(
+                        context,
+                        TradePart(
+                          tabIndex: 1,
+                        ));
+                  },
+                )
+              ]),
+              SizedBox(
+                height: 10,
               )
-            ]),
-            SizedBox(
-              height: 10,
-            )
-          ],
+            ],
+          ),
         ),
       ),
       // bottomSheet: BottomModelSheet(child: TradePart()),

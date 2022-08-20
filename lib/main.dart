@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
               const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
             ],
             background: Container(color: const Color(0xFFF5F5F5))),
-        title: 'Flutter Demo',
+        title: 'Crypto',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: CommonColors().theme,

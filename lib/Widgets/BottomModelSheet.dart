@@ -6,7 +6,10 @@ class BottomModelSheet {
       context: context,
       isScrollControlled: true,
       builder: (context) {
-        return child;
+        return Padding(
+          padding: MediaQuery.of(context).viewInsets,
+          child: child,
+        );
       },
     );
   }
