@@ -137,18 +137,21 @@ class _FiatDepositPageState extends State<FiatDepositPage> {
                       onTap: () async {
                         final XFile? photo = await _picker.pickImage(
                             source: ImageSource.gallery);
-                        setState(() {
-                          _imageFile = photo;
-                        });
+                        if (photo != null) {
+                          setState(() {
+                            _imageFile = photo;
+                          });
+                        }
                       },
                       child: Container(
                         height: 100,
                         width: 100,
                         decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            boxShadow: [
-                              BoxShadow(color: Colors.black, blurRadius: 3.0)
-                            ]),
+                          color: Colors.grey.shade200,
+                          boxShadow: [
+                            BoxShadow(color: Colors.black, blurRadius: 3.0)
+                          ],
+                        ),
                         child: _imageFile != null
                             ? Image.file(
                                 File(_imageFile!.path),
@@ -167,7 +170,7 @@ class _FiatDepositPageState extends State<FiatDepositPage> {
                                     color: Colors.grey,
                                     textAlign: TextAlign.center,
                                     fontWeight: FontWeight.bold,
-                                  )
+                                  ),
                                 ],
                               ),
                       ),

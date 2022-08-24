@@ -1,3 +1,8 @@
+import 'package:cryptodesign/Common/Navigators.dart';
+import 'package:cryptodesign/Screens/BrowserSessions/BrowserSessions.dart';
+import 'package:cryptodesign/Screens/EmailChange/EmailChange.dart';
+import 'package:cryptodesign/Screens/PasswordChange/PasswordChange.dart';
+import 'package:cryptodesign/Screens/TFAScreen/TFAScreen.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
 import 'package:flutter/material.dart';
 
@@ -103,82 +108,114 @@ class _MenuDrawerState extends State<MenuDrawer> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(16, 4, 8, 4),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.email,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    CustomText(
-                                      'Email Change',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    NavigatorsCommon().backPage(context);
+                                    NavigatorsCommon()
+                                        .newPageRoute(context, EmailChange());
+                                  },
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.email,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      CustomText(
+                                        'Email Change',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(16, 4, 8, 4),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.key,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    CustomText(
-                                      'Password Change',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    NavigatorsCommon().backPage(context);
+                                    NavigatorsCommon().newPageRoute(
+                                        context, PasswordChange());
+                                  },
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.key,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      CustomText(
+                                        'Password Change',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(16, 4, 8, 4),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.security,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    CustomText(
-                                      'TFA Activation',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    NavigatorsCommon().backPage(context);
+                                    NavigatorsCommon()
+                                        .newPageRoute(context, TFAScreen());
+                                  },
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.security,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      CustomText(
+                                        'TFA Activation',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(16, 4, 8, 4),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.open_in_browser,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    CustomText(
-                                      'Browser Sessions',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    NavigatorsCommon().backPage(context);
+                                    NavigatorsCommon().newPageRoute(
+                                        context, BrowserSessions());
+                                  },
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.open_in_browser,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      CustomText(
+                                        'Browser Sessions',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Padding(

@@ -1,5 +1,6 @@
 import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Screens/LoginPage/LoginPage.dart';
+import 'package:cryptodesign/demo/PostApi/PostApi.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -32,8 +33,8 @@ class MyApp extends StatelessWidget {
         title: 'Crypto',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: CommonColors().theme,
-        ),
+            primarySwatch: CommonColors().theme,
+            scaffoldBackgroundColor: Colors.white),
         home: LoginPage(),
       );
     });

@@ -10,6 +10,7 @@ class MarketRepository {
     try {
       dynamic response =
           await _apiService.getResponse(ApiEndPoints().getMarket);
+
       print("Market########: $response");
       final jsonData = Markets.fromJson({'MarketData': response});
       return jsonData;

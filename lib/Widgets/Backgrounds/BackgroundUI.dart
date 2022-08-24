@@ -15,19 +15,21 @@ class _BackgroundUIState extends State<BackgroundUI> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Column(
-          children: [
-            Container(
-              color: Colors.white,
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(370.0),
-                  // bottomRight: Radius.circular(15.0)
-                ),
-                child: Container(
-                  height: DynamicSizes().dynamicHeight(context, 0.6),
-                  // color: CommonColors().appTheme,
-                  decoration: BoxDecoration(
+        SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              Container(
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(370.0),
+                    // bottomRight: Radius.circular(15.0)
+                  ),
+                  child: Container(
+                    height: DynamicSizes().dynamicHeight(context, 0.6),
+                    // color: CommonColors().appTheme,
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
@@ -39,27 +41,25 @@ class _BackgroundUIState extends State<BackgroundUI> {
                         ],
                       ),
                       boxShadow: [
-                        BoxShadow(color: CommonColors().white, blurRadius: 3)
-                      ]),
-                  // gradient: LinearGradient(
-                  //   begin: Alignment.topRight,
-                  //   end: Alignment.bottomLeft,
-                  //   colors: [
-                  //     Colors.grey.shade300,
-                  //     Colors.white,
-                  //     Colors.grey.shade300,
-                  //     Colors.white,
-                  //   ],
-                  // ),
+                        BoxShadow(color: CommonColors().white, blurRadius: 3),
+                        BoxShadow(color: CommonColors().white, blurRadius: 3),
+                      ],
+                    ),
+                    // gradient: LinearGradient(
+                    //   begin: Alignment.topRight,
+                    //   end: Alignment.bottomLeft,
+                    //   colors: [
+                    //     Colors.grey.shade300,
+                    //     Colors.white,
+                    //     Colors.grey.shade300,
+                    //     Colors.white,
+                    //   ],
+                    // ),
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                color: CommonColors().white,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
         widget.child
       ],

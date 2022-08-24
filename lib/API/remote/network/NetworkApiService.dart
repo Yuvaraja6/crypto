@@ -17,9 +17,28 @@ class NetworkApiService extends BaseApiService {
     return responseJson;
   }
 
+  @override
+  Future postResponse(String url, Map<String, dynamic>? body) async {
+    dynamic responseJson;
+    var data = json.encode(body);
+    var headers = {"Content-Type": "application/json"};
+    print(data);
+    try {
+      final response =
+          await http.post(Uri.parse(url), headers: headers, body: data);
+      responseJson = returnResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
+    }
+    return responseJson;
+  }
+
   dynamic returnResponse(http.Response response) {
     switch (response.statusCode) {
       case 200:
+        dynamic responseJson = jsonDecode(response.body);
+        return responseJson;
+      case 201:
         dynamic responseJson = jsonDecode(response.body);
         return responseJson;
       case 400:

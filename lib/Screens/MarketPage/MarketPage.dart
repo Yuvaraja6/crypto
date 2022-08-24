@@ -113,6 +113,23 @@ class _MarketPageState extends State<MarketPage> {
     await prefs.setString('symbol', 'ETHBTC');
   }
 
+  List<MarketData> _searchResult = [];
+  List<MarketData>? _markets = [];
+
+  onSearchTextChanged(String text) async {
+    _searchResult.clear();
+    if (text.isEmpty) {
+      setState(() {});
+      return;
+    }
+
+    for (var userDetail in _markets!) {
+      if (userDetail.symbol!.contains(text)) _searchResult.add(userDetail);
+    }
+    print(_searchResult);
+    setState(() {});
+  }
+
   Widget marketListDemo() {
     return Column(
       children: [
@@ -142,90 +159,91 @@ class _MarketPageState extends State<MarketPage> {
                   itemCount: coinsList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (builder) => ChartViewPage()));
-                        },
-                        child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(30.0),
-                                          child: Image.asset(
-                                            coinsList[index]['image'],
-                                            width: 30,
-                                            height: 30,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            CustomText(
-                                              coinsList[index]['coinName'],
-                                              color: CommonColors().black,
-                                              fontWeight: FontWeight.bold,
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (builder) => ChartViewPage()));
+                          },
+                          child: Container(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(30.0),
+                                            child: Image.asset(
+                                              coinsList[index]['image'],
+                                              width: 30,
+                                              height: 30,
                                             ),
-                                            CustomText(
-                                              coinsList[index]['code'],
-                                              color: CommonColors().grey,
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        CustomText(
-                                          coinsList[index]['available'],
-                                          color: CommonColors().black,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        CustomText(
-                                          coinsList[index]['percentage']
-                                                  .toString() +
-                                              ' %',
-                                          color:
-                                              coinsList[index]['percentage'] < 0
-                                                  ? Colors.red
-                                                  : Colors.green,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Chart(
-                                      color: coinsList[index]['percentage'] < 0
-                                          ? Colors.red
-                                          : Colors.green),
-                                ),
-                              ],
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              CustomText(
+                                                coinsList[index]['coinName'],
+                                                color: CommonColors().black,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              CustomText(
+                                                coinsList[index]['code'],
+                                                color: CommonColors().grey,
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          CustomText(
+                                            coinsList[index]['available'],
+                                            color: CommonColors().black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          CustomText(
+                                            coinsList[index]['percentage']
+                                                    .toString() +
+                                                ' %',
+                                            color: coinsList[index]
+                                                        ['percentage'] <
+                                                    0
+                                                ? Colors.red
+                                                : Colors.green,
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    child: Chart(
+                                        color:
+                                            coinsList[index]['percentage'] < 0
+                                                ? Colors.red
+                                                : Colors.green),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    );
+                        ));
                   }),
             ),
           ),
@@ -235,162 +253,164 @@ class _MarketPageState extends State<MarketPage> {
   }
 
   Widget marketAPIList(List<MarketData>? marketList) {
-    return Column(
-      children: [
-        Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            SafeArea(
-              child: GestureDetector(
-                  onTap: () {
-                    _scaffoldKey.currentState!.openDrawer();
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: CircleAvatar(
-                      radius: 15,
-                      backgroundColor: Colors.white,
-                      child: Icon(
-                        Icons.person,
-                        color: CommonColors().appTheme,
-                      ),
-                    ),
-                  )),
-            ),
-            CustomAppBar(
-              title: 'Market',
-              titleColor: CommonColors().white,
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CustomTextFormField(
-            prefixIcon: Icon(Icons.search),
-            hintText: 'Search',
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: CommonColors().white,
-                  boxShadow: [
-                    BoxShadow(color: CommonColors().grey, blurRadius: 5),
-                  ]),
-              child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  itemCount: marketList!.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (builder) => ChartViewPage(
-                                        pair: marketList[index].symbol,
-                                      )));
-                        },
-                        child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Stack(
-                              alignment: Alignment.center,
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: CommonColors().white,
+              boxShadow: [
+                BoxShadow(color: CommonColors().grey, blurRadius: 5),
+              ]),
+          child: ListView.builder(
+              padding: EdgeInsets.zero,
+              itemCount: marketList!.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (builder) => ChartViewPage(
+                                    pair: marketList[index].symbol,
+                                  )));
+                    },
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            CustomText(
-                                              marketList[index].symbol!,
-                                              color: CommonColors().black,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                            CustomText(
-                                              marketList[index].volume!,
-                                              color: CommonColors().grey,
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.end,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         CustomText(
-                                          marketList[index].lastPrice!,
+                                          marketList[index].symbol!,
                                           color: CommonColors().black,
                                           fontWeight: FontWeight.bold,
                                         ),
                                         CustomText(
-                                          '${marketList[index].priceChangePercent!}%',
-                                          color: double.parse(marketList[index]
-                                                      .priceChangePercent!) <
-                                                  0
-                                              ? Colors.red
-                                              : Colors.green,
+                                          marketList[index].volume!,
+                                          color: CommonColors().grey,
                                         )
                                       ],
                                     )
                                   ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Chart(
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    CustomText(
+                                      marketList[index].lastPrice!,
+                                      color: CommonColors().black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    CustomText(
+                                      '${marketList[index].priceChangePercent!}%',
                                       color: double.parse(marketList[index]
                                                   .priceChangePercent!) <
                                               0
                                           ? Colors.red
-                                          : Colors.green),
-                                ),
+                                          : Colors.green,
+                                    )
+                                  ],
+                                )
                               ],
                             ),
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Chart(
+                                  color: double.parse(marketList[index]
+                                              .priceChangePercent!) <
+                                          0
+                                      ? Colors.red
+                                      : Colors.green),
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  }),
-            ),
-          ),
+                    ),
+                  ),
+                );
+              }),
         ),
-      ],
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CommonColors().white,
       key: _scaffoldKey,
+      drawerEnableOpenDragGesture: false,
       drawer: MenuDrawer(),
       body: BackgroundUI(
-        child: ChangeNotifierProvider<MarketVM>(
-          create: (BuildContext context) => viewModel,
-          child: Consumer<MarketVM>(builder: (context, viewModel, _) {
-            switch (viewModel.markets.status) {
-              case Status.LOADING:
-                print("Market :: LOADING");
-                return const LoadingWidget();
-              case Status.ERROR:
-                print("Market :: ERROR");
-                return MyErrorWidget(viewModel.markets.message ?? "NA");
-              case Status.COMPLETED:
-                print("Market :: COMPLETED");
-                return marketAPIList(viewModel.markets.data?.marketData);
-              default:
-            }
-            return Container();
-          }),
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.centerLeft,
+              children: [
+                SafeArea(
+                  child: GestureDetector(
+                      onTap: () {
+                        _scaffoldKey.currentState!.openDrawer();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: CircleAvatar(
+                          radius: 15,
+                          backgroundColor: Colors.white,
+                          child: Icon(
+                            Icons.person,
+                            color: CommonColors().appTheme,
+                          ),
+                        ),
+                      )),
+                ),
+                CustomAppBar(
+                  title: 'Market',
+                  titleColor: CommonColors().white,
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomTextFormField(
+                prefixIcon: Icon(Icons.search),
+                hintText: 'Search',
+                onChanged: onSearchTextChanged,
+              ),
+            ),
+            ChangeNotifierProvider<MarketVM>(
+              create: (BuildContext context) => viewModel,
+              child: Consumer<MarketVM>(builder: (context, viewModel, _) {
+                switch (viewModel.markets.status) {
+                  case Status.LOADING:
+                    print("Market :: LOADING");
+                    return const LoadingWidget();
+                  case Status.ERROR:
+                    print("Market :: ERROR");
+                    return MyErrorWidget(viewModel.markets.message ?? "NA");
+                  case Status.COMPLETED:
+                    print("Market :: COMPLETED");
+                    _markets = viewModel.markets.data?.marketData;
+                    return marketAPIList(viewModel.markets.data?.marketData);
+                  default:
+                }
+                return Container();
+              }),
+            ),
+          ],
         ),
       ),
     );

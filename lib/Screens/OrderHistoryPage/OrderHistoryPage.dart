@@ -31,6 +31,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: OrdersBG(
         child: Column(
           children: [

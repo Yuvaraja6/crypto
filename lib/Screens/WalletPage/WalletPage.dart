@@ -86,6 +86,7 @@ class _WalletPageState extends State<WalletPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: WalletsBG(
         child: Column(
           children: [

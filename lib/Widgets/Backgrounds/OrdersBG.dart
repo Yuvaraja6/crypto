@@ -22,7 +22,7 @@ class _OrdersBGState extends State<OrdersBG> {
             ClipPath(
                 clipper: WaveClipperOne(),
                 child: Container(
-                  height: DynamicSizes().dynamicHeight(context, 0.22),
+                  height: DynamicSizes().dynamicHeight(context, 0.3),
                   color: CommonColors().appTheme,
                 )),
             Expanded(

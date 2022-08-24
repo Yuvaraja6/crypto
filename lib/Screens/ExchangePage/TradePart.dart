@@ -22,10 +22,10 @@ class _TradePartState extends State<TradePart> {
   Widget build(BuildContext context) {
     return Container(
       height: _currentSelectedValue == 'Limit'
-          ? DynamicSizes().dynamicHeight(context, 0.5)
+          ? 440
           : _currentSelectedValue == 'Market'
-              ? DynamicSizes().dynamicHeight(context, 0.3)
-              : DynamicSizes().dynamicHeight(context, 0.6),
+              ? 250
+              : 520,
       child: Form(
         key: _formKey,
         child: Column(
