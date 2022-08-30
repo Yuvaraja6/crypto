@@ -34,130 +34,127 @@ class _ExchangePageState extends State<ExchangePage>
 
   Widget priceTicker() {
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10.0, bottom: 8.0),
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.white, width: 5),
-              boxShadow: [
-                BoxShadow(color: CommonColors().grey, blurRadius: 5),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.white, width: 5),
+            boxShadow: [
+              BoxShadow(color: CommonColors().grey, blurRadius: 5),
+            ],
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromRGBO(0, 188, 212, 1),
+                  Color.fromRGBO(0, 161, 255, 1),
+                  // Color.fromRGBO(0, 121, 255, 1),
+                  Color.fromRGBO(0, 161, 255, 1),
+                  Color.fromRGBO(0, 188, 212, 1),
+                ])),
+        width: DynamicSizes().dynamicWidth(context, 0.9),
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      widget.pair!,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
+                    CustomText(
+                      '33,465.44',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                      color: Colors.red,
+                    ),
+                    Row(
+                      children: [
+                        CustomText(
+                          '\$23.456.00 ',
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        CustomText(
+                          '6.54%',
+                          color: Colors.red,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText(
+                              '24h High',
+                              color: Colors.white,
+                            ),
+                            CustomText(
+                              '23.4456',
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            CustomText(
+                              '24h Volume',
+                              color: Colors.white,
+                            ),
+                            CustomText(
+                              '23.4456',
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText(
+                              '24h Low',
+                              color: Colors.white,
+                            ),
+                            CustomText(
+                              '23.4456',
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            CustomText(
+                              '24h Volume',
+                              color: Colors.white,
+                            ),
+                            CustomText(
+                              '23.4456',
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                )
               ],
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color.fromRGBO(0, 188, 212, 1),
-                    Color.fromRGBO(0, 161, 255, 1),
-                    // Color.fromRGBO(0, 121, 255, 1),
-                    Color.fromRGBO(0, 161, 255, 1),
-                    Color.fromRGBO(0, 188, 212, 1),
-                  ])),
-          width: DynamicSizes().dynamicWidth(context, 0.9),
-          child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(
-                        widget.pair!,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                      CustomText(
-                        '33,465.44',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                        color: Colors.red,
-                      ),
-                      Row(
-                        children: [
-                          CustomText(
-                            '\$23.456.00 ',
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          CustomText(
-                            '6.54%',
-                            color: Colors.red,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                '24h High',
-                                color: Colors.white,
-                              ),
-                              CustomText(
-                                '23.4456',
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              CustomText(
-                                '24h Volume',
-                                color: Colors.white,
-                              ),
-                              CustomText(
-                                '23.4456',
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                '24h Low',
-                                color: Colors.white,
-                              ),
-                              CustomText(
-                                '23.4456',
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              CustomText(
-                                '24h Volume',
-                                color: Colors.white,
-                              ),
-                              CustomText(
-                                '23.4456',
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              )),
-        ),
+            )),
       ),
     );
   }
@@ -228,7 +225,7 @@ class _ExchangePageState extends State<ExchangePage>
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 15.0),
                   child: SizedBox(
                       height: 30,
                       width: DynamicSizes().dynamicWidth(context, 0.6),

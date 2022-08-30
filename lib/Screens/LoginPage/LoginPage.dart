@@ -1,5 +1,9 @@
 import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/DynamicSizes.dart';
+import 'package:cryptodesign/Common/EmailValidator.dart';
+import 'package:cryptodesign/Common/Navigators.dart';
+import 'package:cryptodesign/Screens/ForgotPassword/ForgotPassword.dart';
+import 'package:cryptodesign/Screens/ForgotPassword/VerifyEmail.dart';
 import 'package:cryptodesign/Screens/HomePage/HomePage.dart';
 import 'package:cryptodesign/Screens/RegisterPage/RegisterPage.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
@@ -54,13 +58,9 @@ class _LoginPageState extends State<LoginPage> {
                             child: CustomTextFormField(
                               prefixIcon: Icon(Icons.mail),
                               hintText: 'Enter E-mail',
-                              validator: (val) {
-                                if (val!.isEmpty || val == null) {
-                                  return 'Enter e-mail';
-                                } else {
-                                  return null;
-                                }
-                              },
+                              validator: (input) => input!.isValidEmail()
+                                  ? null
+                                  : "Check your email",
                             ),
                           ),
                           Padding(
@@ -71,44 +71,55 @@ class _LoginPageState extends State<LoginPage> {
                               hintText: 'Enter Password',
                             ),
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: CustomText(
-                              'Forgot Password',
-                              color: CommonColors().appTheme,
-                            ),
-                          ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(16.0),
                             child: RoundedButton(
                                 onTap: () {
+                                  // if (_formKey.currentState!.validate()) {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (builder) => HomePage()));
+                                  // }
                                 },
                                 text: 'Login'),
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CustomText('New User? '),
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (builder) =>
-                                                RegisterPage()));
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 25.0, right: 25.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    CustomText('New User? '),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (builder) =>
+                                                      RegisterPage()));
+                                        },
+                                        child: CustomText(
+                                          'Create Account',
+                                          color: CommonColors().appTheme,
+                                        )),
+                                  ],
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    NavigatorsCommon()
+                                        .newPageRoute(context, VerifyEmail());
                                   },
                                   child: CustomText(
-                                    'Create Account',
+                                    'Forgot Password',
                                     color: CommonColors().appTheme,
-                                  )),
-                            ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(height: 20),
                         ],

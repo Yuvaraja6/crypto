@@ -8,9 +8,13 @@ class CustomTextFormField extends StatefulWidget {
   FormFieldValidator<String>? validator;
   ValueChanged<String>? onChanged;
   final TextEditingController? controller;
+  final Color? fillColor;
   bool? obscureText;
   Widget? prefixIcon;
   Widget? suffixIcon;
+  final InputBorder? enabledBorder;
+  final InputBorder? focusedBorder;
+  final EdgeInsetsGeometry? contentPadding;
   CustomTextFormField({
     Key? key,
     this.hintText,
@@ -18,9 +22,13 @@ class CustomTextFormField extends StatefulWidget {
     this.validator,
     this.onChanged,
     this.controller,
+    this.fillColor,
     this.obscureText = false,
-    this.prefixIcon = const SizedBox(),
-    this.suffixIcon = const SizedBox(),
+    this.prefixIcon,
+    this.suffixIcon,
+    this.enabledBorder,
+    this.focusedBorder,
+    this.contentPadding,
   }) : super(key: key);
 
   @override
@@ -31,6 +39,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autocorrect: false,
+      textAlignVertical: TextAlignVertical.center,
       obscureText: widget.obscureText!,
       controller: widget.controller,
       validator: widget.validator,
@@ -41,16 +51,19 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         hintText: widget.hintText,
         labelText: widget.labelText,
         filled: true,
-        fillColor: Colors.grey.shade200,
-        contentPadding: const EdgeInsets.symmetric(vertical: 20),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: CommonColors().appTheme, width: 3),
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: CommonColors().appTheme, width: 3),
-          borderRadius: BorderRadius.circular(30.0),
-        ),
+        fillColor: widget.fillColor ?? Colors.white,
+        contentPadding: widget.contentPadding ??
+            const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+        focusedBorder: widget.focusedBorder ??
+            OutlineInputBorder(
+              borderSide: BorderSide(color: CommonColors().appTheme, width: 3),
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+        enabledBorder: widget.enabledBorder ??
+            OutlineInputBorder(
+              borderSide: BorderSide(color: CommonColors().appTheme, width: 3),
+              borderRadius: BorderRadius.circular(30.0),
+            ),
       ),
       onChanged: widget.onChanged,
     );

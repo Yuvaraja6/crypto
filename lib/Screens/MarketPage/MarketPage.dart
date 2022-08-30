@@ -1,7 +1,10 @@
 import 'package:cryptodesign/API/remote/response/Status.dart';
 import 'package:cryptodesign/Common/CommonColors.dart';
+import 'package:cryptodesign/Common/DynamicSizes.dart';
 import 'package:cryptodesign/Screens/ChartViewPage/ChartViewPage.dart';
 import 'package:cryptodesign/Screens/Drawer/MenuDrawer.dart';
+import 'package:cryptodesign/Screens/MarketPage/CarouselLayout.dart';
+import 'package:cryptodesign/Screens/MarketPage/HeaderData.dart';
 import 'package:cryptodesign/Screens/MarketPage/Model/Markets.dart';
 import 'package:cryptodesign/Screens/MarketPage/ViewModel/MarketVM.dart';
 import 'package:cryptodesign/Widgets/Backgrounds/BackgroundUI.dart';
@@ -14,6 +17,7 @@ import 'package:cryptodesign/Widgets/MyErrorWidget.dart';
 import 'package:cryptodesign/Widgets/Backgrounds/ExchangeBG.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scroll_loop_auto_scroll/scroll_loop_auto_scroll.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MarketPage extends StatefulWidget {
@@ -101,10 +105,12 @@ class _MarketPageState extends State<MarketPage> {
 
   final MarketVM viewModel = MarketVM();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
     viewModel.fetchMarkets();
+    _markets = viewModel.markets.data?.marketData!;
     super.initState();
   }
 
@@ -124,9 +130,10 @@ class _MarketPageState extends State<MarketPage> {
     }
 
     for (var userDetail in _markets!) {
-      if (userDetail.symbol!.contains(text)) _searchResult.add(userDetail);
+      if (userDetail.symbol!.contains(text.toUpperCase())) {
+        _searchResult.add(userDetail);
+      }
     }
-    print(_searchResult);
     setState(() {});
   }
 
@@ -253,96 +260,98 @@ class _MarketPageState extends State<MarketPage> {
   }
 
   Widget marketAPIList(List<MarketData>? marketList) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: CommonColors().white,
-              boxShadow: [
-                BoxShadow(color: CommonColors().grey, blurRadius: 5),
-              ]),
-          child: ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: marketList!.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (builder) => ChartViewPage(
-                                    pair: marketList[index].symbol,
-                                  )));
-                    },
-                    child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        CustomText(
-                                          marketList[index].symbol!,
-                                          color: CommonColors().black,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        CustomText(
-                                          marketList[index].volume!,
-                                          color: CommonColors().grey,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    CustomText(
-                                      marketList[index].lastPrice!,
-                                      color: CommonColors().black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    CustomText(
-                                      '${marketList[index].priceChangePercent!}%',
-                                      color: double.parse(marketList[index]
-                                                  .priceChangePercent!) <
-                                              0
-                                          ? Colors.red
-                                          : Colors.green,
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Chart(
-                                  color: double.parse(marketList[index]
-                                              .priceChangePercent!) <
-                                          0
-                                      ? Colors.red
-                                      : Colors.green),
-                            ),
-                          ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 500,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: CommonColors().white,
+            boxShadow: [
+              BoxShadow(color: CommonColors().grey, blurRadius: 5),
+            ]),
+        child: marketList!.isEmpty
+            ? CustomText('No data found')
+            : ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: marketList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (builder) => ChartViewPage(
+                                      pair: marketList[index].symbol,
+                                    )));
+                      },
+                      child: Container(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          CustomText(
+                                            marketList[index].symbol!,
+                                            color: CommonColors().black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          CustomText(
+                                            marketList[index].volume!,
+                                            color: CommonColors().grey,
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      CustomText(
+                                        marketList[index].lastPrice!,
+                                        color: CommonColors().black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      CustomText(
+                                        '${marketList[index].priceChangePercent!}%',
+                                        color: double.parse(marketList[index]
+                                                    .priceChangePercent!) <
+                                                0
+                                            ? Colors.red
+                                            : Colors.green,
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Chart(
+                                    color: double.parse(marketList[index]
+                                                .priceChangePercent!) <
+                                            0
+                                        ? Colors.red
+                                        : Colors.green),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                );
-              }),
-        ),
+                  );
+                }),
       ),
     );
   }
@@ -355,62 +364,82 @@ class _MarketPageState extends State<MarketPage> {
       drawerEnableOpenDragGesture: false,
       drawer: MenuDrawer(),
       body: BackgroundUI(
-        child: Column(
-          children: [
-            Stack(
-              alignment: Alignment.centerLeft,
-              children: [
-                SafeArea(
-                  child: GestureDetector(
-                      onTap: () {
-                        _scaffoldKey.currentState!.openDrawer();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: CircleAvatar(
-                          radius: 15,
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.person,
-                            color: CommonColors().appTheme,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                alignment: Alignment.centerLeft,
+                children: [
+                  SafeArea(
+                    child: GestureDetector(
+                        onTap: () {
+                          _scaffoldKey.currentState!.openDrawer();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: Colors.white,
+                            child: Icon(
+                              Icons.person,
+                              color: CommonColors().appTheme,
+                            ),
                           ),
-                        ),
-                      )),
-                ),
-                CustomAppBar(
-                  title: 'Market',
-                  titleColor: CommonColors().white,
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomTextFormField(
-                prefixIcon: Icon(Icons.search),
-                hintText: 'Search',
-                onChanged: onSearchTextChanged,
+                        )),
+                  ),
+                  CustomAppBar(
+                    title: 'Market',
+                    titleColor: CommonColors().white,
+                  ),
+                ],
               ),
-            ),
-            ChangeNotifierProvider<MarketVM>(
-              create: (BuildContext context) => viewModel,
-              child: Consumer<MarketVM>(builder: (context, viewModel, _) {
-                switch (viewModel.markets.status) {
-                  case Status.LOADING:
-                    print("Market :: LOADING");
-                    return const LoadingWidget();
-                  case Status.ERROR:
-                    print("Market :: ERROR");
-                    return MyErrorWidget(viewModel.markets.message ?? "NA");
-                  case Status.COMPLETED:
-                    print("Market :: COMPLETED");
-                    _markets = viewModel.markets.data?.marketData;
-                    return marketAPIList(viewModel.markets.data?.marketData);
-                  default:
-                }
-                return Container();
-              }),
-            ),
-          ],
+              SizedBox(
+                width: DynamicSizes().dynamicWidth(context, 1),
+                child: const ScrollLoopAutoScroll(
+                    child: HeaderData(), //required
+                    scrollDirection: Axis.horizontal, //required
+                    delay: Duration(seconds: 1),
+                    duration: Duration(seconds: 1000),
+                    gap: 0,
+                    reverseScroll: false,
+                    duplicateChild: 50,
+                    enableScrollInput: true,
+                    delayAfterScrollInput: Duration(seconds: 1)),
+              ),
+              CarouselLayout(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CustomTextFormField(
+                  prefixIcon: Icon(Icons.search),
+                  hintText: 'Search',
+                  onChanged: onSearchTextChanged,
+                ),
+              ),
+              ChangeNotifierProvider<MarketVM>(
+                create: (BuildContext context) => viewModel,
+                child: Consumer<MarketVM>(builder: (context, viewModel, _) {
+                  switch (viewModel.markets.status) {
+                    case Status.LOADING:
+                      print("Market :: LOADING");
+                      return const LoadingWidget();
+                    case Status.ERROR:
+                      print("Market :: ERROR");
+                      return MyErrorWidget(viewModel.markets.message ?? "NA");
+                    case Status.COMPLETED:
+                      print("Market :: COMPLETED");
+                      return marketAPIList(_searchResult.isNotEmpty
+                          ? _searchResult
+                          : _searchResult.isEmpty &&
+                                  searchController.text.isNotEmpty
+                              ? []
+                              : viewModel.markets.data?.marketData);
+                    default:
+                  }
+                  return Container();
+                }),
+              ),
+            ],
+          ),
         ),
       ),
     );

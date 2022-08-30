@@ -1,5 +1,7 @@
+import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/Navigators.dart';
 import 'package:cryptodesign/Screens/BrowserSessions/BrowserSessions.dart';
+import 'package:cryptodesign/Screens/DeleteAccount/DeleteAccount.dart';
 import 'package:cryptodesign/Screens/EmailChange/EmailChange.dart';
 import 'package:cryptodesign/Screens/PasswordChange/PasswordChange.dart';
 import 'package:cryptodesign/Screens/TFAScreen/TFAScreen.dart';
@@ -31,15 +33,17 @@ class _MenuDrawerState extends State<MenuDrawer> {
               width: 300,
               child: Container(
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                      Color.fromRGBO(0, 188, 212, 1),
-                      Color.fromRGBO(0, 161, 255, 1),
-                      Color.fromRGBO(0, 161, 255, 1),
-                      Color.fromRGBO(0, 188, 212, 1),
-                    ])),
+                  color: CommonColors().appTheme,
+                  // gradient: LinearGradient(
+                  //     begin: Alignment.topCenter,
+                  //     end: Alignment.bottomCenter,
+                  //     colors: [
+                  //   Color.fromRGBO(0, 188, 212, 1),
+                  //   Color.fromRGBO(0, 161, 255, 1),
+                  //   Color.fromRGBO(0, 161, 255, 1),
+                  //   Color.fromRGBO(0, 188, 212, 1),
+                  // ])
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -220,22 +224,30 @@ class _MenuDrawerState extends State<MenuDrawer> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(16, 4, 8, 4),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.delete_forever,
-                                      color: Colors.red,
-                                    ),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    CustomText(
-                                      'Delete Account',
-                                      color: Colors.red,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    NavigatorsCommon()
+                                        .newPageRoute(context, DeleteAccount());
+                                  },
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.delete_forever,
+                                        color: Colors.red,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      CustomText(
+                                        'Delete Account',
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],

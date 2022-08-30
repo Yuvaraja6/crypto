@@ -1,5 +1,8 @@
 import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/DynamicSizes.dart';
+import 'package:cryptodesign/Common/Navigators.dart';
+import 'package:cryptodesign/Screens/EmailValidation/EmailValidation.dart';
+import 'package:cryptodesign/Screens/HomePage/HomePage.dart';
 import 'package:cryptodesign/Screens/LoginPage/LoginPage.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
 import 'package:cryptodesign/Widgets/CustomTextField.dart';
@@ -70,11 +73,14 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: RoundedButton(text: 'Register'),
-                        ),
-                        SizedBox(
-                          height: 10,
+                          padding: const EdgeInsets.all(16.0),
+                          child: RoundedButton(
+                            text: 'Register',
+                            onTap: () {
+                              NavigatorsCommon().newPageRoute(context,
+                                  OTPVerification(routePage: HomePage()));
+                            },
+                          ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
