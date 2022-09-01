@@ -1,4 +1,5 @@
 import 'package:cryptodesign/Common/CommonColors.dart';
+import 'package:cryptodesign/Common/DynamicSizes.dart';
 import 'package:cryptodesign/Widgets/Backgrounds/EmailChangeBG.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
 import 'package:cryptodesign/Widgets/RoundedBoxButton.dart';
@@ -68,7 +69,9 @@ class _BrowserSessionsState extends State<BrowserSessions> {
                   );
                 }),
           ),
-          RoundedBoxButton(text: 'Logout All Sessions')
+          RoundedBoxButton(
+              width: DynamicSizes().dynamicWidth(context, 0.85),
+              text: 'Logout All Sessions')
         ],
       )),
     );

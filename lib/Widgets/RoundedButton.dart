@@ -28,8 +28,8 @@ class _RoundedButtonState extends State<RoundedButton> {
     return GestureDetector(
       onTap: widget.onTap,
       child: Container(
-        width: DynamicSizes().dynamicHeight(context, 0.7),
-        height: widget.height ?? DynamicSizes().dynamicHeight(context, 0.07),
+        width: 600,
+        height: widget.height ?? 50,
         decoration: BoxDecoration(
             color: widget.buttonColor ?? CommonColors().appTheme,
             borderRadius: BorderRadius.circular(30.0)),

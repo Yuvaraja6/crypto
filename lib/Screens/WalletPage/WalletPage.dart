@@ -1,9 +1,9 @@
 import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/DynamicSizes.dart';
+import 'package:cryptodesign/Common/Navigators.dart';
 import 'package:cryptodesign/Screens/Crypto/CryptoDepositPage/CryptoDepositPage.dart';
 import 'package:cryptodesign/Screens/Crypto/CryptoWithdrawPage/CryptoWithdrawPage.dart';
 import 'package:cryptodesign/Screens/WalletPage/WalletDetailsPage.dart';
-import 'package:cryptodesign/Widgets/Backgrounds/BackgroundUI.dart';
 import 'package:cryptodesign/Widgets/Backgrounds/WalletsBG.dart';
 import 'package:cryptodesign/Widgets/CustomAppBar.dart';
 import 'package:cryptodesign/Widgets/RowDoubleText.dart';
@@ -122,10 +122,9 @@ class _WalletPageState extends State<WalletPage> {
                     children: [
                       RoundedBoxButton(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (builder) => CryptoDepositPage()));
+                          NavigatorsCommon().newPageRoute(
+                              context, CryptoDepositPage(),
+                              startFractionalOffset: FractionalOffset.topRight);
                         },
                         icon: Icon(
                           Icons.arrow_upward,
@@ -134,7 +133,7 @@ class _WalletPageState extends State<WalletPage> {
                         text: 'Deposit',
                         buttonColor: CommonColors().white,
                         textColor: CommonColors().appTheme,
-                        height: DynamicSizes().dynamicHeight(context, 0.06),
+                        height: 40,
                         width: DynamicSizes().dynamicWidth(context, 0.3),
                       ),
                       SizedBox(
@@ -142,10 +141,9 @@ class _WalletPageState extends State<WalletPage> {
                       ),
                       RoundedBoxButton(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (builder) => CryptoWithdrawPage()));
+                          NavigatorsCommon().newPageRoute(
+                              context, CryptoWithdrawPage(),
+                              startFractionalOffset: FractionalOffset.topRight);
                         },
                         icon: Icon(
                           Icons.arrow_downward,
@@ -154,7 +152,7 @@ class _WalletPageState extends State<WalletPage> {
                         text: 'Withdraw',
                         buttonColor: CommonColors().white,
                         textColor: CommonColors().appTheme,
-                        height: DynamicSizes().dynamicHeight(context, 0.06),
+                        height: 40,
                         width: DynamicSizes().dynamicWidth(context, 0.3),
                       ),
                     ],

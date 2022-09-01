@@ -17,6 +17,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,10 +91,10 @@ class _RegisterPageState extends State<RegisterPage> {
                             CustomText('Already have an account? '),
                             TextButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (builder) => LoginPage()));
+                                  NavigatorsCommon().newPageRoute(
+                                      context, LoginPage(),
+                                      startFractionalOffset:
+                                          FractionalOffset.bottomRight);
                                 },
                                 child: CustomText(
                                   'Sign in',

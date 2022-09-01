@@ -55,6 +55,7 @@ class _TFAScreenState extends State<TFAScreen> {
           RoundedBoxButton(
             text: 'Disable TFA',
             buttonColor: Colors.red,
+            width: DynamicSizes().dynamicWidth(context, 0.85),
           ),
         ],
       )),

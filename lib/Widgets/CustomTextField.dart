@@ -13,6 +13,7 @@ class CustomTextFormField extends StatefulWidget {
   Widget? prefixIcon;
   Widget? suffixIcon;
   final InputBorder? enabledBorder;
+  final InputBorder? errorBorder;
   final InputBorder? focusedBorder;
   final EdgeInsetsGeometry? contentPadding;
   CustomTextFormField({
@@ -27,6 +28,7 @@ class CustomTextFormField extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.enabledBorder,
+    this.errorBorder,
     this.focusedBorder,
     this.contentPadding,
   }) : super(key: key);
@@ -62,6 +64,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         enabledBorder: widget.enabledBorder ??
             OutlineInputBorder(
               borderSide: BorderSide(color: CommonColors().appTheme, width: 3),
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+        errorBorder: widget.errorBorder ??
+            OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red, width: 3),
               borderRadius: BorderRadius.circular(30.0),
             ),
       ),

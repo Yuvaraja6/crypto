@@ -3,6 +3,7 @@ import 'package:cryptodesign/Common/Navigators.dart';
 import 'package:cryptodesign/Screens/BrowserSessions/BrowserSessions.dart';
 import 'package:cryptodesign/Screens/DeleteAccount/DeleteAccount.dart';
 import 'package:cryptodesign/Screens/EmailChange/EmailChange.dart';
+import 'package:cryptodesign/Screens/LoginPage/LoginPage.dart';
 import 'package:cryptodesign/Screens/PasswordChange/PasswordChange.dart';
 import 'package:cryptodesign/Screens/TFAScreen/TFAScreen.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
@@ -255,22 +256,28 @@ class _MenuDrawerState extends State<MenuDrawer> {
                         )),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.logout,
-                            color: Colors.white,
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          CustomText(
-                            'Logout',
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ],
+                      child: GestureDetector(
+                        onTap: () {
+                          NavigatorsCommon()
+                              .newPageReplaceRoute(context, LoginPage());
+                        },
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.logout,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            CustomText(
+                              'Logout',
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

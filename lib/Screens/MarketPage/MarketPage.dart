@@ -1,6 +1,7 @@
 import 'package:cryptodesign/API/remote/response/Status.dart';
 import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/DynamicSizes.dart';
+import 'package:cryptodesign/Common/Navigators.dart';
 import 'package:cryptodesign/Screens/ChartViewPage/ChartViewPage.dart';
 import 'package:cryptodesign/Screens/Drawer/MenuDrawer.dart';
 import 'package:cryptodesign/Screens/MarketPage/CarouselLayout.dart';
@@ -169,10 +170,9 @@ class _MarketPageState extends State<MarketPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) => ChartViewPage()));
+                            NavigatorsCommon().newPageRoute(
+                                context, ChartViewPage(),
+                                startFractionalOffset: FractionalOffset.center);
                           },
                           child: Container(
                             child: Padding(
@@ -280,12 +280,12 @@ class _MarketPageState extends State<MarketPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
+                        NavigatorsCommon().newPageRoute(
                             context,
-                            MaterialPageRoute(
-                                builder: (builder) => ChartViewPage(
-                                      pair: marketList[index].symbol,
-                                    )));
+                            ChartViewPage(
+                              pair: marketList[index].symbol,
+                            ),
+                            startFractionalOffset: FractionalOffset.center);
                       },
                       child: Container(
                         child: Padding(

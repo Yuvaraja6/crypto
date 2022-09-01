@@ -1,5 +1,6 @@
 import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/DynamicSizes.dart';
+import 'package:cryptodesign/Common/Navigators.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
 import 'package:cryptodesign/Widgets/CustomTextField.dart';
 import 'package:cryptodesign/Widgets/RoundedButton.dart';
@@ -115,9 +116,7 @@ class _TradePartState extends State<TradePart> {
               padding: const EdgeInsets.all(16.0),
               child: GestureDetector(
                 onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    print('successful');
-                  }
+                  NavigatorsCommon().backPage(context);
                 },
                 child: RoundedButton(
                   text: widget.tabIndex == 0 ? 'Buy' : 'Sell',

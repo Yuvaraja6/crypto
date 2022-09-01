@@ -191,14 +191,6 @@ class _FiatWithdrawPageState extends State<FiatWithdrawPage> {
                                   ),
                                 ),
                               ),
-                              Center(
-                                child: RoundedButton(
-                                  onTap: () {},
-                                  text: 'Withdraw History',
-                                  textColor: CommonColors().appTheme,
-                                  buttonColor: Colors.transparent,
-                                ),
-                              )
                             ],
                           ),
                         ),

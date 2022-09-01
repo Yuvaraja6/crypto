@@ -34,8 +34,8 @@ class _RoundedBoxButtonState extends State<RoundedBoxButton> {
     return GestureDetector(
       onTap: widget.onTap,
       child: Container(
-        width: widget.width ?? DynamicSizes().dynamicWidth(context, 0.7),
-        height: widget.height ?? DynamicSizes().dynamicHeight(context, 0.07),
+        width: widget.width ?? 600,
+        height: widget.height ?? 50,
         decoration: BoxDecoration(
             boxShadow: widget.shadow == false
                 ? []

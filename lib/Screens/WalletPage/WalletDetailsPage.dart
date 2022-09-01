@@ -1,5 +1,6 @@
 import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/DynamicSizes.dart';
+import 'package:cryptodesign/Common/Navigators.dart';
 import 'package:cryptodesign/Screens/Crypto/CryptoDepositPage/CryptoDepositPage.dart';
 import 'package:cryptodesign/Screens/Crypto/CryptoWithdrawPage/CryptoWithdrawPage.dart';
 import 'package:cryptodesign/Screens/Fiat/FiatDepositPage/FiatDepositPage.dart';
@@ -136,15 +137,15 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                       RoundedBoxButton(
                         onTap: () {
                           if (widget.type == 'crypto') {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) => CryptoDepositPage()));
+                            NavigatorsCommon().newPageRoute(
+                                context, CryptoDepositPage(),
+                                startFractionalOffset:
+                                    FractionalOffset.topRight);
                           } else {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) => FiatDepositPage()));
+                            NavigatorsCommon().newPageRoute(
+                                context, FiatDepositPage(),
+                                startFractionalOffset:
+                                    FractionalOffset.topRight);
                           }
                         },
                         icon: Icon(
@@ -160,16 +161,15 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                       RoundedBoxButton(
                         onTap: () {
                           if (widget.type == 'crypto') {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) =>
-                                        CryptoWithdrawPage()));
+                            NavigatorsCommon().newPageRoute(
+                                context, CryptoWithdrawPage(),
+                                startFractionalOffset:
+                                    FractionalOffset.topRight);
                           } else {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) => FiatWithdrawPage()));
+                            NavigatorsCommon().newPageRoute(
+                                context, FiatWithdrawPage(),
+                                startFractionalOffset:
+                                    FractionalOffset.topRight);
                           }
                         },
                         icon: Icon(

@@ -34,85 +34,87 @@ class _ChartViewPageState extends State<ChartViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundUI(
-          child: Column(
-        children: [
-          CustomAppBar(title: widget.pair ?? 'Ethereum'),
-          CustomText(
-            '12345.23 ETH',
-            color: CommonColors().white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: CommonColors().white,
-                boxShadow: [
-                  BoxShadow(color: CommonColors().grey, blurRadius: 5),
-                ]),
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: CustomText(
-                '0.23%',
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
+          child: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomAppBar(title: widget.pair ?? 'Ethereum'),
+            CustomText(
+              '12345.23 ETH',
+              color: CommonColors().white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: CommonColors().white,
+                  boxShadow: [
+                    BoxShadow(color: CommonColors().grey, blurRadius: 5),
+                  ]),
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: CustomText(
+                  '0.23%',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Center(
-              child: Container(
-                  width: DynamicSizes().dynamicWidth(context, 0.9),
-                  height: DynamicSizes().dynamicHeight(context, 0.5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: CommonColors().white,
-                      boxShadow: [
-                        BoxShadow(color: CommonColors().grey, blurRadius: 5),
-                      ]),
-                  child: ChartIndicator(
-                    pair: widget.pair,
-                  ))),
-          SizedBox(
-            height: 40,
-          ),
-          RoundedBoxButton(
-              onTap: () {
-                Navigator.pushAndRemoveUntil<dynamic>(
-                  context,
-                  MaterialPageRoute<dynamic>(
-                    builder: (BuildContext context) => HomePage(
-                      index: 1,
-                      pair: widget.pair,
-                    ),
-                  ),
-                  (route) =>
-                      false, //if you want to disable back feature set to false
-                );
-              },
-              text: 'Buy Now'),
-          SizedBox(
-            height: 20,
-          ),
-          RoundedBoxButton(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            text: 'Go Back',
-            shadow: false,
-            textColor: CommonColors().appTheme,
-            buttonColor: Colors.transparent,
-            icon: Icon(
-              Icons.arrow_back,
-              color: CommonColors().appTheme,
+            SizedBox(
+              height: 40,
             ),
-          )
-        ],
+            Center(
+                child: Container(
+                    width: DynamicSizes().dynamicWidth(context, 0.9),
+                    height: DynamicSizes().dynamicHeight(context, 0.5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: CommonColors().white,
+                        boxShadow: [
+                          BoxShadow(color: CommonColors().grey, blurRadius: 5),
+                        ]),
+                    child: ChartIndicator(
+                      pair: widget.pair,
+                    ))),
+            SizedBox(
+              height: 40,
+            ),
+            RoundedBoxButton(
+                onTap: () {
+                  Navigator.pushAndRemoveUntil<dynamic>(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                      builder: (BuildContext context) => HomePage(
+                        index: 1,
+                        pair: widget.pair,
+                      ),
+                    ),
+                    (route) =>
+                        false, //if you want to disable back feature set to false
+                  );
+                },
+                text: 'Buy Now'),
+            SizedBox(
+              height: 20,
+            ),
+            RoundedBoxButton(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              text: 'Go Back',
+              shadow: false,
+              textColor: CommonColors().appTheme,
+              buttonColor: Colors.transparent,
+              icon: Icon(
+                Icons.arrow_back,
+                color: CommonColors().appTheme,
+              ),
+            )
+          ],
+        ),
       )),
     );
   }

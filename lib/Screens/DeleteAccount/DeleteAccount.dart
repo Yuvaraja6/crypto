@@ -1,5 +1,7 @@
 import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/DynamicSizes.dart';
+import 'package:cryptodesign/Common/Navigators.dart';
+import 'package:cryptodesign/Screens/LoginPage/LoginPage.dart';
 import 'package:cryptodesign/Widgets/Backgrounds/EmailChangeBG.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
 import 'package:cryptodesign/Widgets/CustomTextField.dart';
@@ -60,12 +62,18 @@ class _DeleteAccountState extends State<DeleteAccount> {
                 height: 40,
                 text: 'Never mind',
                 width: 130,
+                onTap: () {
+                  NavigatorsCommon().backPage(context);
+                },
               ),
               RoundedBoxButton(
                 height: 40,
                 text: 'Delete Account',
                 buttonColor: Colors.red,
                 width: 130,
+                onTap: () {
+                  NavigatorsCommon().newPageReplaceRoute(context, LoginPage());
+                },
               )
             ],
           );

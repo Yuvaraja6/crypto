@@ -76,10 +76,10 @@ class _LoginPageState extends State<LoginPage> {
                             child: RoundedButton(
                                 onTap: () {
                                   // if (_formKey.currentState!.validate()) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (builder) => HomePage()));
+                                  NavigatorsCommon().newPageRoute(
+                                      context, HomePage(),
+                                      startFractionalOffset:
+                                          FractionalOffset.center);
                                   // }
                                 },
                                 text: 'Login'),
@@ -96,11 +96,10 @@ class _LoginPageState extends State<LoginPage> {
                                     CustomText('New User? '),
                                     TextButton(
                                         onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (builder) =>
-                                                      RegisterPage()));
+                                          NavigatorsCommon().newPageRoute(
+                                              context, RegisterPage(),
+                                              startFractionalOffset:
+                                                  FractionalOffset.bottomLeft);
                                         },
                                         child: CustomText(
                                           'Create Account',
@@ -110,8 +109,10 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    NavigatorsCommon()
-                                        .newPageRoute(context, VerifyEmail());
+                                    NavigatorsCommon().newPageRoute(
+                                        context, VerifyEmail(),
+                                        startFractionalOffset:
+                                            FractionalOffset.bottomRight);
                                   },
                                   child: CustomText(
                                     'Forgot Password',

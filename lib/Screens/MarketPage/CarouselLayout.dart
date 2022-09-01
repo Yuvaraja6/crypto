@@ -15,10 +15,10 @@ class _CarouselLayoutState extends State<CarouselLayout> {
 
   List images = [
     'https://assets.weforum.org/article/image/f1rGh3mhhk-oj1fj1qjwJ56U37_dJ-MGTGGFHzBp25Q.jpg',
-    'https://blogs.imf.org/wp-content/uploads/2018/03/BLOG-1024x600-cryto-currency-bitcoins-yesfoto-getty-images-iStock-886016628.jpg',
+    'https://www.blockchain.com/static/img/home/opengraph.png',
     'https://www.interactivebrokers.com/images/web/cryptocurrency-hero.jpg',
     'https://usa.visa.com/content/dam/VCOM/regional/na/us/Solutions/visa-crypto-opportunities-800x450.jpg',
-    'https://app.builtin.com/cdn-cgi/image/quality=80,width=752,height=435/https://builtin.com/sites/www.builtin.com/files/styles/byline_image/public/2022-07/cryptocurrency-coins-crypto-trading-platform.png'
+    'https://images.mktw.net/im-429485?width=700&height=487'
   ];
 
   int activePage = 0;
