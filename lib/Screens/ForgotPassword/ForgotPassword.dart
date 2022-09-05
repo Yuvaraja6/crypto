@@ -26,7 +26,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         centerTitle: true,
         title: CustomText(
           'Reset Password',
-          color: Colors.white,
+          color: CommonColors().white(context),
           fontWeight: FontWeight.bold,
         ),
         toolbarHeight: 70,

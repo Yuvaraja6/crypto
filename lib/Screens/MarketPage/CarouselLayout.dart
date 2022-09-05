@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:flutter/material.dart';
 
 class CarouselLayout extends StatefulWidget {
@@ -76,18 +77,18 @@ class _CarouselLayoutState extends State<CarouselLayout> {
               },
               itemBuilder: (context, pagePosition) {
                 bool active = pagePosition == activePage;
-                return slider(images, pagePosition, active);
+                return slider(images, pagePosition, active, context);
               }),
         ),
         Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: indicators(images.length, activePage))
+            children: indicators(images.length, activePage, context))
       ],
     );
   }
 }
 
-AnimatedContainer slider(images, pagePosition, active) {
+AnimatedContainer slider(images, pagePosition, active, context) {
   double margin = active ? 10 : 20;
 
   return AnimatedContainer(
@@ -95,7 +96,7 @@ AnimatedContainer slider(images, pagePosition, active) {
     curve: Curves.easeInOutCubic,
     margin: EdgeInsets.all(margin),
     decoration: BoxDecoration(
-        border: Border.all(color: Colors.white, width: 5),
+        border: Border.all(color: CommonColors().white(context), width: 5),
         borderRadius: BorderRadius.circular(20.0),
         boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 3.0)],
         image: DecorationImage(
@@ -103,14 +104,16 @@ AnimatedContainer slider(images, pagePosition, active) {
   );
 }
 
-List<Widget> indicators(imagesLength, currentIndex) {
+List<Widget> indicators(imagesLength, currentIndex, context) {
   return List<Widget>.generate(imagesLength, (index) {
     return Container(
       margin: EdgeInsets.all(3),
       width: 10,
       height: 10,
       decoration: BoxDecoration(
-          color: currentIndex == index ? Colors.black : Colors.black26,
+          color: currentIndex == index
+              ? CommonColors().black(context)
+              : Colors.black26,
           shape: BoxShape.circle),
     );
   });

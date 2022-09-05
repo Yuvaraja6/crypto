@@ -23,7 +23,7 @@ class _TFAScreenState extends State<TFAScreen> {
         centerTitle: true,
         title: CustomText(
           'TFA Screen',
-          color: Colors.white,
+          color: CommonColors().white(context),
           fontWeight: FontWeight.bold,
         ),
         toolbarHeight: 70,
@@ -54,7 +54,7 @@ class _TFAScreenState extends State<TFAScreen> {
           ),
           RoundedBoxButton(
             text: 'Disable TFA',
-            buttonColor: Colors.red,
+            buttonColor: CommonColors().red,
             width: DynamicSizes().dynamicWidth(context, 0.85),
           ),
         ],

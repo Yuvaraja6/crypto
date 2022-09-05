@@ -20,7 +20,7 @@ class _BackgroundUIState extends State<BackgroundUI> {
           child: Column(
             children: [
               Container(
-                color: Colors.white,
+                color: CommonColors().white(context),
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(370.0),
@@ -41,8 +41,12 @@ class _BackgroundUIState extends State<BackgroundUI> {
                         ],
                       ),
                       boxShadow: [
-                        BoxShadow(color: CommonColors().white, blurRadius: 3),
-                        BoxShadow(color: CommonColors().white, blurRadius: 3),
+                        BoxShadow(
+                            color: CommonColors().white(context),
+                            blurRadius: 3),
+                        BoxShadow(
+                            color: CommonColors().white(context),
+                            blurRadius: 3),
                       ],
                     ),
                     // gradient: LinearGradient(
@@ -50,9 +54,9 @@ class _BackgroundUIState extends State<BackgroundUI> {
                     //   end: Alignment.bottomLeft,
                     //   colors: [
                     //     Colors.grey.shade300,
-                    //     Colors.white,
+                    //     CommonColors().white(context),
                     //     Colors.grey.shade300,
-                    //     Colors.white,
+                    //     CommonColors().white(context),
                     //   ],
                     // ),
                   ),

@@ -26,7 +26,7 @@ class _PasswordChangeState extends State<PasswordChange> {
         centerTitle: true,
         title: CustomText(
           'Update Password',
-          color: Colors.white,
+          color: CommonColors().white(context),
           fontWeight: FontWeight.bold,
         ),
         toolbarHeight: 70,

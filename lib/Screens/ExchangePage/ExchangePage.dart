@@ -37,7 +37,7 @@ class _ExchangePageState extends State<ExchangePage>
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.white, width: 5),
+            border: Border.all(color: CommonColors().white(context), width: 5),
             boxShadow: [
               BoxShadow(color: CommonColors().grey, blurRadius: 5),
             ],
@@ -63,24 +63,24 @@ class _ExchangePageState extends State<ExchangePage>
                       widget.pair!,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: Colors.white,
+                      color: CommonColors().white(context),
                     ),
                     CustomText(
                       '33,465.44',
                       fontWeight: FontWeight.bold,
                       fontSize: 22,
-                      color: Colors.red,
+                      color: CommonColors().red,
                     ),
                     Row(
                       children: [
                         CustomText(
                           '\$23.456.00 ',
-                          color: Colors.white,
+                          color: CommonColors().white(context),
                           fontWeight: FontWeight.w400,
                         ),
                         CustomText(
                           '6.54%',
-                          color: Colors.red,
+                          color: CommonColors().red,
                         ),
                       ],
                     )
@@ -99,11 +99,11 @@ class _ExchangePageState extends State<ExchangePage>
                           children: [
                             CustomText(
                               '24h High',
-                              color: Colors.white,
+                              color: CommonColors().white(context),
                             ),
                             CustomText(
                               '23.4456',
-                              color: Colors.white,
+                              color: CommonColors().white(context),
                               fontWeight: FontWeight.bold,
                             ),
                             SizedBox(
@@ -111,11 +111,11 @@ class _ExchangePageState extends State<ExchangePage>
                             ),
                             CustomText(
                               '24h Volume',
-                              color: Colors.white,
+                              color: CommonColors().white(context),
                             ),
                             CustomText(
                               '23.4456',
-                              color: Colors.white,
+                              color: CommonColors().white(context),
                               fontWeight: FontWeight.bold,
                             )
                           ],
@@ -128,11 +128,11 @@ class _ExchangePageState extends State<ExchangePage>
                           children: [
                             CustomText(
                               '24h Low',
-                              color: Colors.white,
+                              color: CommonColors().white(context),
                             ),
                             CustomText(
                               '23.4456',
-                              color: Colors.white,
+                              color: CommonColors().white(context),
                               fontWeight: FontWeight.bold,
                             ),
                             SizedBox(
@@ -140,11 +140,11 @@ class _ExchangePageState extends State<ExchangePage>
                             ),
                             CustomText(
                               '24h Volume',
-                              color: Colors.white,
+                              color: CommonColors().white(context),
                             ),
                             CustomText(
                               '23.4456',
-                              color: Colors.white,
+                              color: CommonColors().white(context),
                               fontWeight: FontWeight.bold,
                             ),
                           ],
@@ -166,7 +166,7 @@ class _ExchangePageState extends State<ExchangePage>
             height: DynamicSizes().dynamicHeight(context, 0.45),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: CommonColors().white,
+                color: CommonColors().white(context),
                 boxShadow: [
                   BoxShadow(color: CommonColors().grey, blurRadius: 5),
                 ]),
@@ -184,7 +184,7 @@ class _ExchangePageState extends State<ExchangePage>
             height: DynamicSizes().dynamicHeight(context, 0.45),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: CommonColors().white,
+                color: CommonColors().white(context),
                 boxShadow: [
                   BoxShadow(color: CommonColors().grey, blurRadius: 5),
                 ]),
@@ -199,7 +199,7 @@ class _ExchangePageState extends State<ExchangePage>
             height: DynamicSizes().dynamicHeight(context, 0.45),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: CommonColors().white,
+                color: CommonColors().white(context),
                 boxShadow: [
                   BoxShadow(color: CommonColors().grey, blurRadius: 5),
                 ]),
@@ -211,7 +211,7 @@ class _ExchangePageState extends State<ExchangePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CommonColors().white,
+      backgroundColor: CommonColors().white(context),
       body: ExchangeBG(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -237,22 +237,22 @@ class _ExchangePageState extends State<ExchangePage>
                       controller: _tabController,
                       labelPadding: EdgeInsets.only(right: 8.0, left: 8.0),
                       indicatorSize: TabBarIndicatorSize.label,
-                      indicatorColor: Colors.white,
+                      indicatorColor: CommonColors().white(context),
                       indicatorWeight: 3,
                       tabs: [
                         CustomText(
                           'Chart',
-                          color: CommonColors().white,
+                          color: CommonColors().white(context),
                           fontWeight: FontWeight.bold,
                         ),
                         CustomText(
                           'Order book',
-                          color: CommonColors().white,
+                          color: CommonColors().white(context),
                           fontWeight: FontWeight.bold,
                         ),
                         CustomText(
                           'Trades',
-                          color: CommonColors().white,
+                          color: CommonColors().white(context),
                           fontWeight: FontWeight.bold,
                         ),
                       ],
@@ -291,7 +291,7 @@ class _ExchangePageState extends State<ExchangePage>
                     ),
                     RoundedBoxButton(
                       text: 'Sell',
-                      buttonColor: Colors.red,
+                      buttonColor: CommonColors().red,
                       width: DynamicSizes().dynamicWidth(context, 0.45),
                       onTap: () {
                         BottomModelSheet().modalBottomSheet(

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CommonColors {
   Color appTheme = Color(0xFF0050ff);
   MaterialColor theme =
       MaterialColor(0xFF0050ff, RGBGenerate().color(0, 80, 255));
-  Color white = Colors.white;
-  Color black = Colors.black;
+  Color white(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1!.color!;
+  }
+
+  Color black(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText2!.color!;
+  }
+
   Color grey = Colors.grey;
   Color red = Colors.red;
   Color deepOrange = Colors.deepOrange;
@@ -28,3 +35,6 @@ class RGBGenerate {
     return color;
   }
 }
+
+ValueNotifier<Color> whiteColor = ValueNotifier(Colors.white);
+ValueNotifier<Color> blackColor = ValueNotifier(Colors.black);

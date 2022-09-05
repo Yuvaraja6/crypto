@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: CommonColors().white,
+                        color: CommonColors().white(context),
                         borderRadius: BorderRadius.circular(30)),
                     child: Form(
                       key: _formKey,
@@ -74,15 +74,17 @@ class _LoginPageState extends State<LoginPage> {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: RoundedButton(
-                                onTap: () {
-                                  // if (_formKey.currentState!.validate()) {
-                                  NavigatorsCommon().newPageRoute(
-                                      context, HomePage(),
-                                      startFractionalOffset:
-                                          FractionalOffset.center);
-                                  // }
-                                },
-                                text: 'Login'),
+                              onTap: () {
+                                // if (_formKey.currentState!.validate()) {
+                                NavigatorsCommon().newPageRoute(
+                                    context, HomePage(),
+                                    startFractionalOffset:
+                                        FractionalOffset.center);
+                                // }
+                              },
+                              text: 'Login',
+                              textColor: Colors.white,
+                            ),
                           ),
                           Padding(
                             padding:

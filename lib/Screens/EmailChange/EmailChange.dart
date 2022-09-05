@@ -23,7 +23,7 @@ class _EmailChangeState extends State<EmailChange> {
         centerTitle: true,
         title: CustomText(
           'Change Email',
-          color: Colors.white,
+          color: CommonColors().white(context),
           fontWeight: FontWeight.bold,
         ),
         toolbarHeight: 70,

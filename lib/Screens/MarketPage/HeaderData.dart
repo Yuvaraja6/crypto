@@ -1,3 +1,4 @@
+import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/DynamicSizes.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
 import 'package:flutter/material.dart';

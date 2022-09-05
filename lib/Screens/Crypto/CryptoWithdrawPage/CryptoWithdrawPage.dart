@@ -33,7 +33,7 @@ class _CryptoWithdrawPageState extends State<CryptoWithdrawPage> {
                       child: Container(
                         width: DynamicSizes().dynamicWidth(context, 0.9),
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: CommonColors().white(context),
                             borderRadius: BorderRadius.circular(30.0),
                             boxShadow: [
                               BoxShadow(

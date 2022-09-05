@@ -48,11 +48,11 @@ class _TradePartState extends State<TradePart> {
                       // value: _currentSelectedValue,
                       icon: Icon(
                         Icons.arrow_drop_down_sharp,
-                        color: CommonColors().white,
+                        color: CommonColors().white(context),
                       ),
                       hint: CustomText(
                         _currentSelectedValue,
-                        color: CommonColors().white,
+                        color: CommonColors().white(context),
                         fontWeight: FontWeight.w500,
                       ),
                       isDense: true,
@@ -67,7 +67,7 @@ class _TradePartState extends State<TradePart> {
                           value: value,
                           child: CustomText(
                             value,
-                            color: Colors.black,
+                            color: CommonColors().black(context),
                           ),
                         );
                       }).toList(),
@@ -120,8 +120,9 @@ class _TradePartState extends State<TradePart> {
                 },
                 child: RoundedButton(
                   text: widget.tabIndex == 0 ? 'Buy' : 'Sell',
-                  textColor: Colors.white,
-                  buttonColor: widget.tabIndex == 0 ? Colors.green : Colors.red,
+                  textColor: CommonColors().white(context),
+                  buttonColor:
+                      widget.tabIndex == 0 ? Colors.green : CommonColors().red,
                 ),
               ),
             )

@@ -7,6 +7,7 @@ import 'package:cryptodesign/Screens/LoginPage/LoginPage.dart';
 import 'package:cryptodesign/Screens/PasswordChange/PasswordChange.dart';
 import 'package:cryptodesign/Screens/TFAScreen/TFAScreen.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
+import 'package:cryptodesign/Widgets/DarkThemeSwitch.dart';
 import 'package:flutter/material.dart';
 
 class MenuDrawer extends StatefulWidget {
@@ -25,7 +26,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
       alignment: Alignment.centerLeft,
       child: SafeArea(
         child: SizedBox(
-          height: 400,
+          height: 450,
           child: ClipRRect(
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(550),
@@ -51,6 +52,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
                     SizedBox(
                       height: 30,
                     ),
+                    ChangeThemeButtonWidget(),
                     SizedBox(
                       width: 220,
                       child: Padding(
@@ -66,7 +68,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
                       ),
                     ),
                     Divider(
-                      color: Colors.white,
+                      color: CommonColors().white(context),
                       thickness: 2,
                     ),
                     Padding(
@@ -237,14 +239,14 @@ class _MenuDrawerState extends State<MenuDrawer> {
                                     children: [
                                       Icon(
                                         Icons.delete_forever,
-                                        color: Colors.red,
+                                        color: CommonColors().red,
                                       ),
                                       SizedBox(
                                         width: 15,
                                       ),
                                       CustomText(
                                         'Delete Account',
-                                        color: Colors.red,
+                                        color: CommonColors().red,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ],

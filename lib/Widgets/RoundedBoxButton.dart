@@ -50,7 +50,7 @@ class _RoundedBoxButtonState extends State<RoundedBoxButton> {
               CustomText(
                 widget.text,
                 fontWeight: FontWeight.bold,
-                color: widget.textColor ?? CommonColors().white,
+                color: widget.textColor ?? CommonColors().white(context),
               ),
             ],
           ),

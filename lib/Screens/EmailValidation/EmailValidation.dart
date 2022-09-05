@@ -34,7 +34,7 @@ class _OTPVerificationState extends State<OTPVerification> {
         centerTitle: true,
         title: CustomText(
           'OTP Verification',
-          color: Colors.white,
+          color: CommonColors().white(context),
           fontWeight: FontWeight.bold,
         ),
         toolbarHeight: 70,

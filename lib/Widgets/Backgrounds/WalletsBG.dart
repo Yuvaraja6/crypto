@@ -28,7 +28,7 @@ class _WalletsBGState extends State<WalletsBG> {
                 )),
             Expanded(
               child: Container(
-                color: CommonColors().white,
+                color: CommonColors().white(context),
               ),
             ),
           ],

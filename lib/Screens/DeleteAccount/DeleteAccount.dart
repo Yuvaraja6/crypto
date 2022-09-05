@@ -32,7 +32,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
                 'Delete Account',
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.bold,
-                color: Colors.red,
+                color: CommonColors().red,
                 fontSize: 20,
               ),
             ),
@@ -69,7 +69,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
               RoundedBoxButton(
                 height: 40,
                 text: 'Delete Account',
-                buttonColor: Colors.red,
+                buttonColor: CommonColors().red,
                 width: 130,
                 onTap: () {
                   NavigatorsCommon().newPageReplaceRoute(context, LoginPage());
@@ -88,7 +88,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
         centerTitle: true,
         title: CustomText(
           'Delete Account',
-          color: Colors.white,
+          color: CommonColors().white(context),
           fontWeight: FontWeight.bold,
         ),
         toolbarHeight: 70,
@@ -110,7 +110,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
                   child: CustomText(
                 'Permanently delete your account!!!',
                 fontWeight: FontWeight.bold,
-                color: Colors.red,
+                color: CommonColors().red,
               )),
               const SizedBox(
                 height: 30,
@@ -129,7 +129,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
                 },
                 text: 'Delete Account',
                 width: DynamicSizes().dynamicWidth(context, 1),
-                buttonColor: Colors.red,
+                buttonColor: CommonColors().red,
               ),
               const SizedBox(
                 height: 30,

@@ -26,7 +26,7 @@ class _ExchangeBGState extends State<ExchangeBG> {
                 )),
             Expanded(
               child: Container(
-                color: CommonColors().white,
+                color: CommonColors().white(context),
               ),
             ),
           ],

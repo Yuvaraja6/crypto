@@ -37,7 +37,7 @@ class _RoundedButtonState extends State<RoundedButton> {
           child: CustomText(
             widget.text,
             fontWeight: FontWeight.bold,
-            color: widget.textColor ?? CommonColors().white,
+            color: widget.textColor ?? CommonColors().white(context),
           ),
         ),
       ),

@@ -77,7 +77,7 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
           ),
           Container(
             decoration: BoxDecoration(
-                color: CommonColors().white,
+                color: CommonColors().white(context),
                 borderRadius: BorderRadius.circular(20.0),
                 boxShadow: [
                   BoxShadow(color: CommonColors().grey, blurRadius: 5)
@@ -92,7 +92,7 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                   ),
                   CustomText(
                     'Balance',
-                    color: CommonColors().black,
+                    color: CommonColors().black(context),
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -113,7 +113,7 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                           children: [
                             CustomText(
                               '952.65 BTC',
-                              color: Colors.black,
+                              color: CommonColors().black(context),
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
                             ),
@@ -150,11 +150,11 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                         },
                         icon: Icon(
                           Icons.arrow_upward,
-                          color: CommonColors().white,
+                          color: CommonColors().white(context),
                         ),
                         text: 'Deposit',
                         buttonColor: CommonColors().appTheme,
-                        textColor: CommonColors().white,
+                        textColor: CommonColors().white(context),
                         height: DynamicSizes().dynamicHeight(context, 0.06),
                         width: DynamicSizes().dynamicWidth(context, 0.3),
                       ),
@@ -174,11 +174,11 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                         },
                         icon: Icon(
                           Icons.arrow_downward,
-                          color: CommonColors().white,
+                          color: CommonColors().white(context),
                         ),
                         text: 'Withdraw',
                         buttonColor: CommonColors().appTheme,
-                        textColor: CommonColors().white,
+                        textColor: CommonColors().white(context),
                         height: DynamicSizes().dynamicHeight(context, 0.06),
                         width: DynamicSizes().dynamicWidth(context, 0.3),
                       ),
@@ -200,7 +200,7 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
               padding: const EdgeInsets.all(8.0),
               child: CustomText(
                 'History:',
-                color: CommonColors().black,
+                color: CommonColors().black(context),
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
@@ -218,7 +218,7 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: CommonColors().white,
+                          color: CommonColors().white(context),
                           borderRadius: BorderRadius.circular(10.0),
                           boxShadow: [
                             BoxShadow(color: CommonColors().grey, blurRadius: 3)
@@ -233,7 +233,7 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                                 Container(
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: CommonColors().white,
+                                      color: CommonColors().white(context),
                                       boxShadow: [
                                         BoxShadow(
                                             color: CommonColors().grey,
@@ -245,7 +245,7 @@ class _WalletDetailsPageState extends State<WalletDetailsPage> {
                                       ? Icon(
                                           Icons.arrow_upward,
                                           size: 40,
-                                          color: Colors.red,
+                                          color: CommonColors().red,
                                         )
                                       : Icon(
                                           Icons.arrow_downward,

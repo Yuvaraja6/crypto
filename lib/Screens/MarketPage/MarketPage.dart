@@ -13,6 +13,7 @@ import 'package:cryptodesign/Widgets/Chart.dart';
 import 'package:cryptodesign/Widgets/CustomAppBar.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
 import 'package:cryptodesign/Widgets/CustomTextField.dart';
+import 'package:cryptodesign/Widgets/DarkThemeSwitch.dart';
 import 'package:cryptodesign/Widgets/LoadingWidget.dart';
 import 'package:cryptodesign/Widgets/MyErrorWidget.dart';
 import 'package:cryptodesign/Widgets/Backgrounds/ExchangeBG.dart';
@@ -143,7 +144,7 @@ class _MarketPageState extends State<MarketPage> {
       children: [
         CustomAppBar(
           title: 'Market',
-          titleColor: CommonColors().white,
+          titleColor: CommonColors().white(context),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -158,7 +159,7 @@ class _MarketPageState extends State<MarketPage> {
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: CommonColors().white,
+                  color: CommonColors().white(context),
                   boxShadow: [
                     BoxShadow(color: CommonColors().grey, blurRadius: 5),
                   ]),
@@ -204,7 +205,8 @@ class _MarketPageState extends State<MarketPage> {
                                             children: [
                                               CustomText(
                                                 coinsList[index]['coinName'],
-                                                color: CommonColors().black,
+                                                color: CommonColors()
+                                                    .black(context),
                                                 fontWeight: FontWeight.bold,
                                               ),
                                               CustomText(
@@ -221,7 +223,8 @@ class _MarketPageState extends State<MarketPage> {
                                         children: [
                                           CustomText(
                                             coinsList[index]['available'],
-                                            color: CommonColors().black,
+                                            color:
+                                                CommonColors().black(context),
                                             fontWeight: FontWeight.bold,
                                           ),
                                           CustomText(
@@ -231,7 +234,7 @@ class _MarketPageState extends State<MarketPage> {
                                             color: coinsList[index]
                                                         ['percentage'] <
                                                     0
-                                                ? Colors.red
+                                                ? CommonColors().red
                                                 : Colors.green,
                                           )
                                         ],
@@ -243,7 +246,7 @@ class _MarketPageState extends State<MarketPage> {
                                     child: Chart(
                                         color:
                                             coinsList[index]['percentage'] < 0
-                                                ? Colors.red
+                                                ? CommonColors().red
                                                 : Colors.green),
                                   ),
                                 ],
@@ -266,7 +269,7 @@ class _MarketPageState extends State<MarketPage> {
         height: 500,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: CommonColors().white,
+            color: CommonColors().white(context),
             boxShadow: [
               BoxShadow(color: CommonColors().grey, blurRadius: 5),
             ]),
@@ -305,7 +308,8 @@ class _MarketPageState extends State<MarketPage> {
                                         children: [
                                           CustomText(
                                             marketList[index].symbol!,
-                                            color: CommonColors().black,
+                                            color:
+                                                CommonColors().black(context),
                                             fontWeight: FontWeight.bold,
                                           ),
                                           CustomText(
@@ -321,7 +325,7 @@ class _MarketPageState extends State<MarketPage> {
                                     children: [
                                       CustomText(
                                         marketList[index].lastPrice!,
-                                        color: CommonColors().black,
+                                        color: CommonColors().black(context),
                                         fontWeight: FontWeight.bold,
                                       ),
                                       CustomText(
@@ -329,7 +333,7 @@ class _MarketPageState extends State<MarketPage> {
                                         color: double.parse(marketList[index]
                                                     .priceChangePercent!) <
                                                 0
-                                            ? Colors.red
+                                            ? CommonColors().red
                                             : Colors.green,
                                       )
                                     ],
@@ -342,7 +346,7 @@ class _MarketPageState extends State<MarketPage> {
                                     color: double.parse(marketList[index]
                                                 .priceChangePercent!) <
                                             0
-                                        ? Colors.red
+                                        ? CommonColors().red
                                         : Colors.green),
                               ),
                             ],
@@ -359,7 +363,7 @@ class _MarketPageState extends State<MarketPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CommonColors().white,
+      backgroundColor: CommonColors().white(context),
       key: _scaffoldKey,
       drawerEnableOpenDragGesture: false,
       drawer: MenuDrawer(),
@@ -379,7 +383,7 @@ class _MarketPageState extends State<MarketPage> {
                           padding: const EdgeInsets.only(left: 10),
                           child: CircleAvatar(
                             radius: 15,
-                            backgroundColor: Colors.white,
+                            backgroundColor: CommonColors().white(context),
                             child: Icon(
                               Icons.person,
                               color: CommonColors().appTheme,
@@ -389,8 +393,12 @@ class _MarketPageState extends State<MarketPage> {
                   ),
                   CustomAppBar(
                     title: 'Market',
-                    titleColor: CommonColors().white,
+                    titleColor: CommonColors().white(context),
                   ),
+                  SafeArea(
+                      child: Align(
+                          alignment: Alignment.centerRight,
+                          child: ChangeThemeButtonWidget()))
                 ],
               ),
               SizedBox(

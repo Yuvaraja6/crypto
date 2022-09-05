@@ -31,7 +31,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: CommonColors().white(context),
       body: OrdersBG(
         child: Column(
           children: [
@@ -41,7 +41,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage>
               child: Container(
                 height: 50,
                 decoration: BoxDecoration(
-                  color: CommonColors().white,
+                  color: CommonColors().white(context),
                   borderRadius: BorderRadius.circular(10),
                   // boxShadow: [
                   //   BoxShadow(color: CommonColors().grey, blurRadius: 5),
@@ -61,16 +61,16 @@ class _OrderHistoryPageState extends State<OrderHistoryPage>
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                         color: _tabController!.index == 0
-                            ? CommonColors().white
-                            : CommonColors().black,
+                            ? CommonColors().white(context)
+                            : CommonColors().black(context),
                       ),
                       CustomText(
                         "Order History",
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                         color: _tabController!.index == 1
-                            ? CommonColors().white
-                            : CommonColors().black,
+                            ? CommonColors().white(context)
+                            : CommonColors().black(context),
                       )
                     ],
                     controller: _tabController,

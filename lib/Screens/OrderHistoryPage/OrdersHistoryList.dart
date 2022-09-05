@@ -95,7 +95,7 @@ class _OrdersHistoryListState extends State<OrdersHistoryList> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: CommonColors().white(context),
                 borderRadius: BorderRadius.circular(15.0),
                 boxShadow: [
                   BoxShadow(
@@ -122,7 +122,7 @@ class _OrdersHistoryListState extends State<OrdersHistoryList> {
                                   openOrders[index]['status'],
                                   color:
                                       openOrders[index]['status'] == "Cancelled"
-                                          ? Colors.red
+                                          ? CommonColors().red
                                           : Colors.green,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -171,11 +171,11 @@ class _OrdersHistoryListState extends State<OrdersHistoryList> {
                                 child: selectedIndex == index
                                     ? Icon(
                                         Icons.keyboard_arrow_up,
-                                        color: CommonColors().black,
+                                        color: CommonColors().black(context),
                                       )
                                     : Icon(
                                         Icons.keyboard_arrow_down,
-                                        color: CommonColors().black,
+                                        color: CommonColors().black(context),
                                       ),
                               ),
                             ),

@@ -53,7 +53,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         hintText: widget.hintText,
         labelText: widget.labelText,
         filled: true,
-        fillColor: widget.fillColor ?? Colors.white,
+        fillColor: widget.fillColor ?? CommonColors().white(context),
         contentPadding: widget.contentPadding ??
             const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
         focusedBorder: widget.focusedBorder ??
@@ -68,7 +68,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
         errorBorder: widget.errorBorder ??
             OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 3),
+              borderSide: BorderSide(color: CommonColors().red, width: 3),
               borderRadius: BorderRadius.circular(30.0),
             ),
       ),

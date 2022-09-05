@@ -45,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: CommonColors().white(context),
                         borderRadius: BorderRadius.circular(30)),
                     child: Column(
                       children: [
@@ -79,6 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           padding: const EdgeInsets.all(16.0),
                           child: RoundedButton(
                             text: 'Register',
+                            textColor: Colors.white,
                             onTap: () {
                               NavigatorsCommon().newPageRoute(context,
                                   OTPVerification(routePage: HomePage()));

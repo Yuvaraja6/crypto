@@ -40,7 +40,7 @@ class _ChartViewPageState extends State<ChartViewPage> {
             CustomAppBar(title: widget.pair ?? 'Ethereum'),
             CustomText(
               '12345.23 ETH',
-              color: CommonColors().white,
+              color: CommonColors().white(context),
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -50,7 +50,7 @@ class _ChartViewPageState extends State<ChartViewPage> {
             Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: CommonColors().white,
+                  color: CommonColors().white(context),
                   boxShadow: [
                     BoxShadow(color: CommonColors().grey, blurRadius: 5),
                   ]),
@@ -72,7 +72,7 @@ class _ChartViewPageState extends State<ChartViewPage> {
                     height: DynamicSizes().dynamicHeight(context, 0.5),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: CommonColors().white,
+                        color: CommonColors().white(context),
                         boxShadow: [
                           BoxShadow(color: CommonColors().grey, blurRadius: 5),
                         ]),

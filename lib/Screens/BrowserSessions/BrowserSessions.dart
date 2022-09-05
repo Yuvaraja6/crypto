@@ -21,7 +21,7 @@ class _BrowserSessionsState extends State<BrowserSessions> {
         centerTitle: true,
         title: CustomText(
           'Browser Session',
-          color: Colors.white,
+          color: CommonColors().white(context),
           fontWeight: FontWeight.bold,
         ),
         toolbarHeight: 70,

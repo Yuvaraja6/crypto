@@ -1,3 +1,4 @@
+import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:flutter/material.dart';
 
 class CustomText extends StatefulWidget {
@@ -11,7 +12,7 @@ class CustomText extends StatefulWidget {
       {Key? key,
       this.fontWeight = FontWeight.normal,
       this.fontSize = 16,
-      this.color = Colors.black,
+      this.color,
       this.textAlign,
       this.overflow})
       : super(key: key);
@@ -27,7 +28,7 @@ class _CustomTextState extends State<CustomText> {
       widget.data,
       textAlign: widget.textAlign ?? TextAlign.left,
       style: TextStyle(
-          color: widget.color,
+          color: widget.color ?? Theme.of(context).textTheme.bodyText2!.color,
           fontSize: widget.fontSize,
           fontWeight: widget.fontWeight),
       overflow: widget.overflow,

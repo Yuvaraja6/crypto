@@ -8,7 +8,6 @@ import 'package:cryptodesign/Widgets/CustomAppBar.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
 import 'package:cryptodesign/Widgets/CustomTextField.dart';
 import 'package:cryptodesign/Widgets/RoundedBoxButton.dart';
-import 'package:cryptodesign/Widgets/RoundedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -39,7 +38,7 @@ class _FiatDepositPageState extends State<FiatDepositPage> {
                     child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: CommonColors().white,
+                          color: CommonColors().white(context),
                           boxShadow: [
                             BoxShadow(
                                 color: CommonColors().grey, blurRadius: 5),
@@ -149,7 +148,9 @@ class _FiatDepositPageState extends State<FiatDepositPage> {
                         decoration: BoxDecoration(
                           color: Colors.grey.shade200,
                           boxShadow: [
-                            BoxShadow(color: Colors.black, blurRadius: 3.0)
+                            BoxShadow(
+                                color: CommonColors().black(context),
+                                blurRadius: 3.0)
                           ],
                         ),
                         child: _imageFile != null

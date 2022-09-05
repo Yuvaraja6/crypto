@@ -1,4 +1,5 @@
 import 'package:cryptodesign/API/remote/response/Status.dart';
+import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:cryptodesign/Common/DynamicSizes.dart';
 import 'package:cryptodesign/Screens/ExchangePage/OrderBook/ViewModel/OrderBookVM.dart';
 import 'package:cryptodesign/Widgets/CustomText.dart';
@@ -28,11 +29,11 @@ class _OrderBookState extends State<OrderBook> {
             children: [
               CustomText(
                 openOrders[index][0],
-                color: Colors.red,
+                color: CommonColors().red,
               ),
               CustomText(
                 openOrders[index][1],
-                color: Colors.red,
+                color: CommonColors().red,
               )
             ],
           );
@@ -130,7 +131,7 @@ class _OrderBookState extends State<OrderBook> {
                   children: [
                     CustomText(
                       '0.00123433 BTC',
-                      color: Colors.red,
+                      color: CommonColors().red,
                     ),
                     CustomText(
                       '\$33.44',
@@ -189,7 +190,7 @@ class _OrderBookState extends State<OrderBook> {
                             BoxShadow(color: Colors.grey, blurRadius: 3),
                           ],
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white),
+                          color: CommonColors().white(context)),
                       child: Image.asset(
                         'assets/images/icons/arrows.png',
                         height: 35,
@@ -211,11 +212,11 @@ class _OrderBookState extends State<OrderBook> {
                             BoxShadow(color: Colors.grey, blurRadius: 3),
                           ],
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white),
+                          color: CommonColors().white(context)),
                       child: Image.asset(
                         'assets/images/icons/arrows.png',
                         height: 35,
-                        color: Colors.red,
+                        color: CommonColors().red,
                       )),
                 ),
                 SizedBox(
@@ -234,7 +235,7 @@ class _OrderBookState extends State<OrderBook> {
                             BoxShadow(color: Colors.grey, blurRadius: 3),
                           ],
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white),
+                          color: CommonColors().white(context)),
                       child: Image.asset(
                         'assets/images/icons/arrows.png',
                         height: 35,

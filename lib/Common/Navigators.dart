@@ -6,16 +6,17 @@ class NavigatorsCommon {
   newPageRoute(BuildContext context, Widget page,
       {FractionalOffset? startFractionalOffset, int? duration}) {
     Navigator.push(
-      context,
-      SplashRoute(
-        targetPage: page,
-        splashColor: CommonColors().appTheme,
-        startFractionalOffset: startFractionalOffset ?? FractionalOffset.center,
-        transitionDuration: Duration(
-          milliseconds: duration ?? 2500,
-        ),
-      ),
-    );
+        context,
+        // SplashRoute(
+        //   targetPage: page,
+        //   splashColor: CommonColors().appTheme,
+        //   startFractionalOffset:
+        //       startFractionalOffset ?? FractionalOffset.center,
+        //   transitionDuration: Duration(
+        //     milliseconds: duration ?? 2500,
+        //   ),
+        // ));
+        MaterialPageRoute(builder: (builder) => page));
   }
 
   backPage(BuildContext context) {

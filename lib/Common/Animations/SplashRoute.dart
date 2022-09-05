@@ -1,3 +1,4 @@
+import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:flutter/material.dart';
 
 Widget _defaultTransitionsBuilder(
@@ -71,8 +72,8 @@ class SplashRoute<T> extends PageRoute<T> {
                     center: startFractionalOffset,
                     radius: value * 5,
                     colors: [
-                      Colors.white,
-                      Colors.white,
+                      CommonColors().white(context),
+                      CommonColors().white(context),
                       splashColor,
                       Colors.transparent,
                     ],

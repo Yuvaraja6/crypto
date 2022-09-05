@@ -1,3 +1,4 @@
+import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:flutter/material.dart';
 
 class OtpInput extends StatelessWidget {
@@ -17,10 +18,11 @@ class OtpInput extends StatelessWidget {
         controller: controller,
         maxLength: 1,
         cursorColor: Theme.of(context).primaryColor,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
             border: OutlineInputBorder(),
             counterText: '',
-            hintStyle: TextStyle(color: Colors.black, fontSize: 20.0)),
+            hintStyle: TextStyle(
+                color: CommonColors().black(context), fontSize: 20.0)),
         onChanged: (value) {
           if (value.length == 1) {
             FocusScope.of(context).nextFocus();

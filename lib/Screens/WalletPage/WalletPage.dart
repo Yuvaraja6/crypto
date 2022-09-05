@@ -86,7 +86,7 @@ class _WalletPageState extends State<WalletPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: CommonColors().white(context),
       body: WalletsBG(
         child: Column(
           children: [
@@ -103,13 +103,13 @@ class _WalletPageState extends State<WalletPage> {
                       children: [
                         CustomText(
                           'Total Approx.',
-                          color: CommonColors().white,
+                          color: CommonColors().white(context),
                         ),
                         CustomText(
                           '\$632,32,234.56',
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
-                          color: CommonColors().white,
+                          color: CommonColors().white(context),
                         ),
                       ],
                     ),
@@ -131,7 +131,7 @@ class _WalletPageState extends State<WalletPage> {
                           color: CommonColors().appTheme,
                         ),
                         text: 'Deposit',
-                        buttonColor: CommonColors().white,
+                        buttonColor: CommonColors().white(context),
                         textColor: CommonColors().appTheme,
                         height: 40,
                         width: DynamicSizes().dynamicWidth(context, 0.3),
@@ -150,7 +150,7 @@ class _WalletPageState extends State<WalletPage> {
                           color: CommonColors().appTheme,
                         ),
                         text: 'Withdraw',
-                        buttonColor: CommonColors().white,
+                        buttonColor: CommonColors().white(context),
                         textColor: CommonColors().appTheme,
                         height: 40,
                         width: DynamicSizes().dynamicWidth(context, 0.3),
@@ -169,7 +169,7 @@ class _WalletPageState extends State<WalletPage> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: CommonColors().white,
+                      color: CommonColors().white(context),
                       boxShadow: [
                         BoxShadow(color: CommonColors().grey, blurRadius: 5),
                       ]),
@@ -233,7 +233,7 @@ class _WalletPageState extends State<WalletPage> {
                                             color: coinsList[index]
                                                         ['percentage'] <
                                                     0
-                                                ? Colors.red
+                                                ? CommonColors().red
                                                 : Colors.green,
                                           ),
                                         ],
@@ -243,15 +243,15 @@ class _WalletPageState extends State<WalletPage> {
                                 ),
                                 RowDoubleText(
                                   firstText: 'Total Balance',
-                                  firstTextColor: CommonColors().black,
+                                  firstTextColor: CommonColors().black(context),
                                   lastText: coinsList[index]['total'],
-                                  lastTextColor: CommonColors().black,
+                                  lastTextColor: CommonColors().black(context),
                                 ),
                                 RowDoubleText(
                                   firstText: 'Available Balance',
-                                  firstTextColor: CommonColors().black,
+                                  firstTextColor: CommonColors().black(context),
                                   lastText: coinsList[index]['available'],
-                                  lastTextColor: CommonColors().black,
+                                  lastTextColor: CommonColors().black(context),
                                 )
                               ],
                             ),

@@ -1,3 +1,4 @@
+import 'package:cryptodesign/Common/CommonColors.dart';
 import 'package:flutter/material.dart';
 
 class Demo extends StatefulWidget {
@@ -23,7 +24,7 @@ class _DemoState extends State<Demo> {
             child: Container(
               height: 100,
               width: 100,
-              color: Colors.red,
+              color: CommonColors().red,
             ),
           ),
           Visibility(

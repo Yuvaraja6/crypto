@@ -27,7 +27,7 @@ class _OrdersBGState extends State<OrdersBG> {
                 )),
             Expanded(
               child: Container(
-                color: CommonColors().white,
+                color: CommonColors().white(context),
               ),
             ),
           ],
